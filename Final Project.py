@@ -97,26 +97,30 @@ import numpy as np
 monthly_rate = ((1+0.05)**(1/12) - 1)
 print(monthly_rate)
 
+## calculate monthly payment
+monthly_payment = -1*(np.pmt(rate=monthly_rate, nper=12*25, pv=662500))
+print(monthly_payment)
 
 ##Plot the histogram
 import matplotlib.pyplot as plt
-df = pd.DataFrame({'RESIDENTIAL_UNITS' : (5,28,16,10,6,20,8,44,15,24,30,10)})
+df = pd.DataFrame({'RESIDENTIAL_UNITS' : (5,28,16,10,6,20,8,44,15,24,30,10),
+                   'LAND_SQUARE_FEET' : (1633,4616,2212,2272,2369,2581,1750,5163,1534,4489,4295,3717)})
 
-plt.hist(df['RESIDENTIAL_UNITS'])
+plt.hist(df)
 
 #Label the axes
-plt.xlabel('column')
-plt.ylabel('row')
+plt.xlabel('LAND_SQUARE_FEET')
+plt.ylabel('RESIDENTIAL_UNITS')
 
 #show the figure
 plt.show()
 
 #Tidy up histogram chart
-plt.hist(df['RESIDENTIAL_UNITS'], bins=30)
+plt.hist(df, bins=30)
 
 #Label the axes
-plt.xlabel('column')
-plt.ylabel('row')
+plt.xlabel('LAND_SQUARE_FEET')
+plt.ylabel('RESIDENTIAL_UNITS')
 
 #show the figure
 plt.show()
